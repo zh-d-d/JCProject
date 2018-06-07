@@ -2,6 +2,7 @@ package com.jc_zhangdd.lib_common
 
 import android.app.Application
 import android.util.Log
+import com.jc_zhangdd.lib_common.util.LogUtils
 
 /**
  * Project: JCProject
@@ -12,7 +13,6 @@ open class BaseApplication() : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        Log.i(TAG, "base application run")
+        LogUtils.i(TAG,"base application run")
     }
 }
