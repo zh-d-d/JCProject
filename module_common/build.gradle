@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -27,6 +29,7 @@ dependencies {
 
     api "com.android.support:appcompat-v7:$rootProject.ext.appcompatV7"
     api "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayout"
+    api 'org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.60'
 //    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.ext.arouterCompileVersion"
 //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
 }
