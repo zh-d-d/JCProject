@@ -1,0 +1,13 @@
+//通用配置
+ext {
+    minSdkVersion = 16
+    targetSdkVersion = 23
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
+
+    arouterApiVersion = "1.2.1.1"
+    arouterCompileVersion = "1.1.2"
+
+    appcompatV7 = '27.1.1'
+    constraintLayout = '1.1.0'
+}
