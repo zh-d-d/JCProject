@@ -15,8 +15,16 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            zipAlignEnabled true
+            debuggable false
+
+            buildConfigField 'boolean' , 'IS_DEBUG_MODE' , IS_DEBUG_MODE_RELEASE
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            zipAlignEnabled false
+            debuggable true
+            buildConfigField 'boolean' , 'IS_DEBUG_MODE' , IS_DEBUG_MODE_DEBUG
         }
     }
 
