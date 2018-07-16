@@ -3,6 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    signingConfigs {
+        keyConfig {
+            keyAlias KEY_MOBILE_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(KEY_FILE)
+            storePassword KEY_PASSWORD
+        }
+    }
+
     defaultConfig {
         applicationId "com.jc_zhangdd.jcproject"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -15,14 +26,37 @@ android {
             minifyEnabled IS_OPEN_MINIFY.toBoolean()
             zipAlignEnabled true
             debuggable IS_DEBUG_MODE_RELEASE.toBoolean()
-            buildConfigField 'boolean' , 'IS_DEBUG_MODE' , IS_DEBUG_MODE_RELEASE
+            signingConfig signingConfigs.keyConfig
+            buildConfigField 'boolean', 'IS_DEBUG_MODE', IS_DEBUG_MODE_RELEASE
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled IS_OPEN_MINIFY.toBoolean()
             zipAlignEnabled false
             debuggable IS_DEBUG_MODE_DEBUG.toBoolean()
-            buildConfigField 'boolean' , 'IS_DEBUG_MODE',IS_DEBUG_MODE_DEBUG
+            buildConfigField 'boolean', 'IS_DEBUG_MODE', IS_DEBUG_MODE_DEBUG
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+
+        variant.outputs.all {
+            outputFileName = "ync-v" + defaultConfig.versionName + "-" + variant.buildType.name + ".apk"
+        }
+
+        variant.assemble.doLast {
+            if (variant.buildType.name.contains('release')) {
+                def apkPath = variant.outputs.first().outputFile as File
+                print apkPath.getParent()
+                if (IS_REINFORCE.toBoolean()) {
+                    exec {
+                        ignoreExitValue true
+                        commandLine "sh", "../jiagu/jiagu.sh", apkPath, apkPath.getParent(), defaultConfig.versionName
+                    }
+                } else {
+
+                }
+            }
         }
     }
 }
