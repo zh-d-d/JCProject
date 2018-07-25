@@ -10,4 +10,5 @@ ext {
 
     appcompatV7 = '27.1.1'
     constraintLayout = '1.1.0'
+    glideVersion = "4.7.1"
 }

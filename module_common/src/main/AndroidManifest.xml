@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.jc_zhangdd.lib_common"/>
+    package="com.jc_zhangdd.lib_common">
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+

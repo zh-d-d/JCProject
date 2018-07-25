@@ -63,4 +63,5 @@ android {
 
 dependencies {
     implementation project(':module_common')
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
 }

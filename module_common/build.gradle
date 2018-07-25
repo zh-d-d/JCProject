@@ -39,4 +39,7 @@ dependencies {
     api 'org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.60'
 //    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.ext.arouterCompileVersion"
 //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterknifeVersion"
+
+    api "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideVersion"
 }
